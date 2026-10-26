@@ -1,0 +1,471 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Комплексная защита от угроз БПЛА</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap"><style>html,body{margin:0;height:100%;background:#000;overflow:hidden;font-family:'Exo 2',Arial,sans-serif}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;margin:-540px 0 0 -960px;transform-origin:50% 50%}
+section.slide{position:absolute;left:0;top:0;box-sizing:border-box;width:1920px;height:1080px;overflow:hidden;isolation:isolate;opacity:0;pointer-events:none;transition:opacity .35s ease;color:#e8eef3}
+section.slide.on{opacity:1;pointer-events:auto}
+section.slide>img:first-child{z-index:-1}
+section img{object-fit:fill}section video{display:block}
+div,p,h1,h2,h3,ul,li{box-sizing:border-box}p,h1,h2,h3,ul{margin:0}ul{padding-left:1.1em}li{margin:0}
+a{color:inherit}
+@font-face{font-family:'ExoFB';src:local('Arial'),local('Helvetica Neue'),local('Helvetica'),local('Liberation Sans'),local('DejaVu Sans');size-adjust:86%}
+body.nofont section.slide *{font-family:'ExoFB',Arial,sans-serif !important}
+#ui{position:fixed;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:10px;opacity:0;transition:opacity .3s;z-index:9}
+body:hover #ui{opacity:.85}
+#ui button{background:#091218cc;color:#e8eef3;border:1px solid #2a3a43;border-radius:8px;padding:6px 14px;font:600 14px 'Exo 2',Arial,sans-serif;cursor:pointer}
+#ui span{align-self:center;color:#9fb0bf;font:500 14px 'Exo 2',Arial,sans-serif;min-width:54px;text-align:center}</style></head><body><div id="stage"><section id="cover" class="slide" style="background:#060b10">
+  <img src="assets/a26cb5bd640d.jpg" alt="" style="position:absolute; top:0; left:0; width:1920px; height:1080px">
+  <p style="position:absolute; top:28px; left:198px; width:600px; font-family:'Exo 2', Arial, sans-serif; font-size:15px; font-weight:600; letter-spacing:3px; color:#9fb0bf"><span style="color:#b6f23a">●</span>&nbsp;&nbsp;ПРОЕКТ</p>
+  <p style="position:absolute; top:28px; left:1122px; width:600px; font-family:'Exo 2', Arial, sans-serif; font-size:15px; font-weight:600; letter-spacing:3px; text-align:right; color:#5d6b77">2026</p>
+  <p style="position:absolute; top:292px; left:198px; width:250px; padding:9px 0; font-family:'Exo 2', Arial, sans-serif; font-size:18px; font-weight:600; letter-spacing:2px; text-align:center; color:#b6f23a; border:1px solid #4a5f2c; border-radius:6px">СИСТЕМНАЯ ЗАЩИТА</p>
+  <p style="position:absolute; top:292px; left:466px; width:360px; padding:9px 0; font-family:'Exo 2', Arial, sans-serif; font-size:18px; font-weight:600; letter-spacing:2px; text-align:center; color:#b6f23a; border:1px solid #4a5f2c; border-radius:6px">ПАССИВНЫЕ + АКТИВНЫЕ МЕРЫ</p>
+  <h1 style="position:absolute; top:370px; left:198px; width:1150px; font-family:'Exo 2', Arial, sans-serif; font-size:84px; font-weight:800; line-height:1.08; color:#e8eef3">КОМПЛЕКСНАЯ ЗАЩИТА<br><span style="color:#b6f23a">ОТ УГРОЗ БПЛА</span></h1>
+  <p style="position:absolute; top:572px; left:198px; width:900px; font-family:'Exo 2', Arial, sans-serif; font-size:28px; font-weight:500; line-height:1.4; color:#9db4cc">Единая архитектура защиты критически важных объектов: снижение ущерба, обнаружение угроз, координация реагирования и контроль эффективности.</p>
+  <div style="position:absolute; top:770px; left:198px; width:560px; height:3px; display:flex; flex-direction:column; background:linear-gradient(90deg, #b6f23a 0%, #b6f23a00 100%)">
+  </div>
+  
+</section>
+
+<section id="context" class="slide" style="background:#060b10">
+  <img src="assets/d8be33349ff8.jpg" alt="" style="position:absolute; top:0; left:0; width:1920px; height:1080px">
+  <p id="e2-12zovi4" style="position:absolute; top:26px; left:199px; width:84px; font-family:'Exo 2', Arial, sans-serif; font-size:16.9px; line-height:1.3; color:#9fb0bf">02 / <span style="color:#5d6b77">08</span></p>
+  <p id="e3-12zovi4" style="position:absolute; top:29px; left:421px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#e8eef3">КОНТЕКСТ</p>
+  <p id="e4-12zovi4" style="position:absolute; top:29px; left:527px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">АРХИТЕКТУРА РЕШЕНИЯ</p>
+  <p id="e5-12zovi4" style="position:absolute; top:29px; left:704px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">ПАССИВНАЯ ЗАЩИТА</p>
+  <p id="e6-12zovi4" style="position:absolute; top:29px; left:864px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">АКТИВНАЯ ЗАЩИТА</p>
+  <p id="e7-12zovi4" style="position:absolute; top:29px; left:1018px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">РАЗМЕЩЕНИЕ ОБОРУДОВАНИЯ</p>
+  <p id="e8-12zovi4" style="position:absolute; top:29px; left:1227px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">ЭКОНОМИКА</p>
+  <p id="e9-12zovi4" style="position:absolute; top:29px; left:1343px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">КОНТАКТЫ</p>
+  <div id="e11-12zovi4" style="position:absolute; top:50px; left:421px; width:55px; height:3px; display:flex; flex-direction:column; background:#b6f23a">
+  </div>
+  <p id="e13-12zovi4" style="position:absolute; top:1025px; left:1627px; width:105px; font-family:'Exo 2', Arial, sans-serif; font-size:10px; font-weight:500; line-height:1.3; text-align:right; color:#5d6b77">02 / 08</p>
+  <div id="p7d4680d544d9r0-199daf3e" style="position:absolute; top:118px; left:198px; width:1524px; height:145px; display:flex; flex-direction:column; gap:12px">
+    <div style="display:flex; flex-direction:row; gap:12px; align-items:center">
+      <div style="width:6px; height:24px; display:flex; flex-direction:column; background:#b6f23a">
+      </div>
+      <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; letter-spacing:1px; color:#9fb0bf">КОНТЕКСТ</p>
+    </div>
+    <h2 style="font-family:'Exo 2', Arial, sans-serif; font-size:50px; font-weight:800; line-height:1.1; color:#e8eef3">УГРОЗА СТАЛА СИСТЕМНОЙ</h2>
+    <p style="width:1300px; font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:500; line-height:1.35; color:#9db4cc">Открытые сообщения и мониторинг инцидентов показывают масштаб задачи.</p>
+  </div>
+  <div id="p7d4680d544d9r1-199daf3e" style="position:absolute; top:293px; left:198px; width:1524px; height:226px; display:flex; flex-direction:row; gap:24px">
+    <div style="display:flex; flex-direction:column; gap:8px; flex:1; padding:28px; background:#091218d6; border:1px solid #2a3a43; border-radius:14px">
+      <p style="font-family:'Exo 2', Arial, sans-serif; font-size:88px; font-weight:800; line-height:1.05; color:#b6f23a">61&nbsp;426</p>
+      <p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:400; line-height:1.3; color:#9fb0bf">всего инцидентов в счётчике BPLA Russia на момент проверки</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; flex:1; padding:28px; background:#091218d6; border:1px solid #2a3a43; border-radius:14px">
+      <p style="font-family:'Exo 2', Arial, sans-serif; font-size:88px; font-weight:800; line-height:1.05; color:#b6f23a">8&nbsp;566</p>
+      <p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:400; line-height:1.3; color:#9fb0bf">за последний месяц по счётчику BPLA Russia</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; flex:1; padding:28px; background:#091218d6; border:1px solid #2a3a43; border-radius:14px">
+      <p style="font-family:'Exo 2', Arial, sans-serif; font-size:88px; font-weight:800; line-height:1.05; color:#b6f23a">2&nbsp;188</p>
+      <p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:400; line-height:1.3; color:#9fb0bf">за последнюю неделю по счётчику BPLA Russia</p>
+    </div>
+  </div>
+  <div id="p7d4680d544d9r2-199daf3e" style="position:absolute; top:549px; left:198px; width:1524px; height:396px; display:flex; flex-direction:row; gap:40px; align-items:center; padding:32px; background:#091218d6; border:1px solid #2a3a43; border-radius:14px">
+    <div style="display:flex; flex-direction:column; gap:16px; flex:1">
+      <h3 style="font-family:'Exo 2', Arial, sans-serif; font-size:38px; font-weight:700; line-height:1.2; color:#e8eef3">Интерактивная карта атак БПЛА</h3>
+      <p style="font-family:'Exo 2', Arial, sans-serif; font-size:28px; font-weight:700; line-height:1.3; color:#e8eef3"><a target="_blank" rel="noopener" href="https://bplarussia.ru/map/"><span style="color:#b6f23a">Открыть карту: https://bplarussia.ru/map/</span></a></p>
+    </div>
+  </div>
+  <img src="assets/c12dbe42d00d.webp" alt="Снимок экрана — 2026-10-23 в 18.30.58.png" style="position:absolute; top:561.67px; left:998.64px; width:699.75px; height:370.69px; border-radius:12px; border:1px solid #3a4f5a; box-shadow:0 0 36px #b6f23a1f, 0 10px 28px #00000099">
+  
+</section>
+
+<section id="arch" class="slide" style="background:#060b10">
+  <img src="assets/eb1b801f86ac.jpg" alt="" style="position:absolute; top:0; left:50%; width:1920px; height:1080px; transform:translateX(-50%)">
+  <p style="position:absolute; top:26px; left:199px; width:84px; font-family:'Exo 2', Arial, sans-serif; font-size:16.9px; font-weight:500; line-height:1.3; color:#9fb0bf">03 / <span style="color:#5d6b77">08</span></p>
+  <p style="position:absolute; top:29px; left:421px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">КОНТЕКСТ</p>
+  <p style="position:absolute; top:29px; left:527px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#e8eef3">АРХИТЕКТУРА РЕШЕНИЯ</p>
+  <p style="position:absolute; top:29px; left:704px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">ПАССИВНАЯ ЗАЩИТА</p>
+  <p style="position:absolute; top:29px; left:864px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">АКТИВНАЯ ЗАЩИТА</p>
+  <p style="position:absolute; top:29px; left:1018px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">РАЗМЕЩЕНИЕ ОБОРУДОВАНИЯ</p>
+  <p style="position:absolute; top:29px; left:1227px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">ЭКОНОМИКА</p>
+  <p style="position:absolute; top:29px; left:1343px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">КОНТАКТЫ</p>
+  <p style="position:absolute; top:105px; left:218px; width:422px; font-family:'Exo 2', Arial, sans-serif; font-size:16.9px; font-weight:500; line-height:1.3; color:#9fb0bf">АРХИТЕКТУРА РЕШЕНИЯ</p>
+  <div style="position:absolute; top:108px; left:199px; width:5px; height:18px; display:flex; flex-direction:column; background:#b6f23a">
+  </div>
+  <p style="position:absolute; top:140px; left:199px; width:802px; font-family:'Exo 2', Arial, sans-serif; font-size:51.7px; font-weight:800; line-height:1.1; color:#e8eef3">ЭШЕЛОНИРОВАННАЯ ЗАЩИТА</p>
+  <p style="position:absolute; top:208.01px; left:199px; width:802px; height:51.47px; font-family:'Exo 2', Arial, sans-serif; font-size:19.5px; font-weight:500; line-height:1.3; color:#9db4cc">Комплексный подход к защите критической инфраструктуры от атак БПЛА: пассивные и активные средства, объединённые в единую систему управления.</p>
+  <p style="position:absolute; top:157px; left:1093px; width:264px; font-family:'Exo 2', Arial, sans-serif; font-size:13.7px; font-weight:700; line-height:1.3; color:#b6f23a">ПАССИВНАЯ ЗАЩИТА</p>
+  <p style="position:absolute; top:208px; left:1093px; width:221px; font-family:'Exo 2', Arial, sans-serif; font-size:13.2px; font-weight:400; line-height:1.3; color:#9fb0bf">Инженерные решения, которые снижают вероятность поражения и минимизируют ущерб.</p>
+  <p style="position:absolute; top:157px; left:1487px; width:264px; font-family:'Exo 2', Arial, sans-serif; font-size:13.7px; font-weight:700; line-height:1.3; color:#b6f23a">АКТИВНАЯ ЗАЩИТА</p>
+  <p style="position:absolute; top:208px; left:1487px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:13.2px; font-weight:400; line-height:1.3; color:#9fb0bf">Обнаружение, аналитика и поражение воздушных целей на всех рубежах эшелонированной обороны.</p>
+  <p style="position:absolute; top:332px; left:403px; width:169px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:700; line-height:1.3; color:#3aa0ff">50–20 км</p>
+  <p style="position:absolute; top:355px; left:403px; width:169px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:500; line-height:1.3; color:#9fb0bf">1-я линия</p>
+  <p style="position:absolute; top:332px; left:645px; width:169px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:700; line-height:1.3; color:#2ee6b0">20–10 км</p>
+  <p style="position:absolute; top:355px; left:645px; width:169px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:500; line-height:1.3; color:#9fb0bf">2-я линия</p>
+  <p style="position:absolute; top:332px; left:856px; width:169px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:700; line-height:1.3; color:#ffd21f">10–5 км</p>
+  <p style="position:absolute; top:355px; left:856px; width:169px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:500; line-height:1.3; color:#9fb0bf">3-я линия</p>
+  <p style="position:absolute; top:332px; left:1046px; width:169px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:700; line-height:1.3; color:#ff8a1f">5–0 км</p>
+  <p style="position:absolute; top:355px; left:1046px; width:169px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:500; line-height:1.3; color:#9fb0bf">4-я линия</p>
+  <p style="position:absolute; top:343px; left:1227px; width:158px; font-family:'Exo 2', Arial, sans-serif; font-size:15.3px; font-weight:700; line-height:1.3; color:#ff4d5e">ФИНАЛ</p>
+  <p style="position:absolute; top:370px; left:1227px; width:158px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:500; line-height:1.3; color:#9fb0bf">Объект</p>
+  <p style="position:absolute; top:328px; left:1362px; width:348px; font-family:'Exo 2', Arial, sans-serif; font-size:22.1px; font-weight:800; line-height:1.3; color:#e8eef3">ЭШЕЛОНЫ ЗАЩИТЫ</p>
+  <p style="position:absolute; top:362px; left:1362px; width:348px; font-family:'Exo 2', Arial, sans-serif; font-size:14.8px; font-weight:400; line-height:1.3; color:#9fb0bf">От дальней линии до объекта</p>
+  <p style="position:absolute; top:408px; left:1362px; width:116px; font-family:'Exo 2', Arial, sans-serif; font-size:10px; font-weight:600; line-height:1.3; color:#9fb0bf">РУБЕЖ</p>
+  <p style="position:absolute; top:408px; left:1485px; width:116px; font-family:'Exo 2', Arial, sans-serif; font-size:10px; font-weight:600; line-height:1.3; color:#9fb0bf">ДИСТАНЦИЯ</p>
+  <p style="position:absolute; top:408px; left:1591px; width:116px; font-family:'Exo 2', Arial, sans-serif; font-size:10px; font-weight:600; line-height:1.3; color:#9fb0bf">СРЕДСТВА</p>
+  <p style="position:absolute; top:445px; left:1398px; width:84px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:500; line-height:1.3; color:#e8eef3">1-я линия</p>
+  <p style="position:absolute; top:446px; left:1485px; width:95px; font-family:'Exo 2', Arial, sans-serif; font-size:13.7px; font-weight:400; line-height:1.3; color:#9fb0bf">50–20 км</p>
+  <p style="position:absolute; top:446px; left:1591px; width:132px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:400; line-height:1.25; color:#e8eef3">РЭБ, Перехватчики СТ / разведчики</p>
+  <p style="position:absolute; top:502px; left:1398px; width:84px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:500; line-height:1.3; color:#e8eef3">2-я линия</p>
+  <p style="position:absolute; top:503px; left:1485px; width:95px; font-family:'Exo 2', Arial, sans-serif; font-size:13.7px; font-weight:400; line-height:1.3; color:#9fb0bf">20–10 км</p>
+  <p style="position:absolute; top:503px; left:1591px; width:132px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:400; line-height:1.25; color:#e8eef3">РЛС, ЭО, расчет БПЛА</p>
+  <p style="position:absolute; top:556px; left:1398px; width:84px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:500; line-height:1.3; color:#e8eef3">3-я линия</p>
+  <p style="position:absolute; top:556px; left:1485px; width:95px; font-family:'Exo 2', Arial, sans-serif; font-size:13.7px; font-weight:400; line-height:1.3; color:#9fb0bf">10–5 км</p>
+  <p style="position:absolute; top:556px; left:1591px; width:132px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:400; line-height:1.25; color:#e8eef3">РЛС, Турели и МОГ</p>
+  <p style="position:absolute; top:610px; left:1398px; width:84px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:500; line-height:1.3; color:#e8eef3">4-я линия</p>
+  <p style="position:absolute; top:610px; left:1485px; width:95px; font-family:'Exo 2', Arial, sans-serif; font-size:13.7px; font-weight:400; line-height:1.3; color:#9fb0bf">5–0 км</p>
+  <p style="position:absolute; top:610px; left:1591px; width:132px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:400; line-height:1.25; color:#e8eef3">ЗРПК Панцирь</p>
+  <p style="position:absolute; top:663px; left:1398px; width:84px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:500; line-height:1.3; color:#e8eef3">Финал</p>
+  <p style="position:absolute; top:663px; left:1485px; width:95px; font-family:'Exo 2', Arial, sans-serif; font-size:13.7px; font-weight:400; line-height:1.3; color:#9fb0bf">Объект</p>
+  <p style="position:absolute; top:663px; left:1591px; width:132px; font-family:'Exo 2', Arial, sans-serif; font-size:14.2px; font-weight:400; line-height:1.25; color:#e8eef3">Системы РЭБ</p>
+  <p style="position:absolute; top:744px; left:1362px; width:359px; font-family:'Exo 2', Arial, sans-serif; font-size:12.1px; font-weight:400; line-height:1.3; color:#9fb0bf">ПАК «Аэрогард» создает привязку к местности для всех групп, участвующих в отражении атаки БПЛА, осуществляет сбор статистики пролётов.</p>
+  <p style="position:absolute; top:858px; left:233px; width:316px; font-family:'Exo 2', Arial, sans-serif; font-size:13.2px; font-weight:600; line-height:1.3; color:#e8eef3">КЛЮЧЕВЫЕ ПРЕИМУЩЕСТВА</p>
+  <p style="position:absolute; top:909px; left:287px; width:211px; font-family:'Exo 2', Arial, sans-serif; font-size:12.7px; font-weight:400; line-height:1.45; color:#9fb0bf">Многослойная<br>защита</p>
+  <p style="position:absolute; top:909px; left:490px; width:211px; font-family:'Exo 2', Arial, sans-serif; font-size:12.7px; font-weight:400; line-height:1.45; color:#9fb0bf">Снижение нагрузки<br>на ПВО</p>
+  <p style="position:absolute; top:899px; left:751px; width:211px; font-family:'Exo 2', Arial, sans-serif; font-size:12.7px; font-weight:400; line-height:1.45; color:#9fb0bf">Гибкость и масштабирование</p>
+  <p style="position:absolute; top:909px; left:1061px; width:211px; font-family:'Exo 2', Arial, sans-serif; font-size:12.7px; font-weight:400; line-height:1.45; color:#9fb0bf">Сбор и анализ данных<br>о воздушной обстановке</p>
+  <p style="position:absolute; top:881px; left:1434px; width:211px; font-family:'Exo 2', Arial, sans-serif; font-size:15.8px; font-weight:700; line-height:1.3; color:#b6f23a">РЕЗУЛЬТАТ</p>
+  <p style="position:absolute; top:918px; left:1434px; width:274px; font-family:'Exo 2', Arial, sans-serif; font-size:13.7px; font-weight:400; line-height:1.3; color:#9fb0bf">Снижение вероятности прорыва БПЛА к объекту и минимизация ущерба.</p>
+  <p style="position:absolute; top:1025px; left:1627px; width:105px; font-family:'Exo 2', Arial, sans-serif; font-size:10px; font-weight:500; line-height:1.3; text-align:right; color:#5d6b77">03 / 08</p>
+  <div style="position:absolute; top:315px; left:351px; width:40px; height:40px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#07121a; border:2px solid #3aa0ff; border-radius:50%; box-shadow:0 0 14px rgba(58,160,255,0.55)"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; color:#3aa0ff; text-align:center">1</p></div>
+  <div style="position:absolute; top:315px; left:595.5px; width:40px; height:40px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#07121a; border:2px solid #2ee6b0; border-radius:50%; box-shadow:0 0 14px rgba(46,230,176,0.55)"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; color:#2ee6b0; text-align:center">2</p></div>
+  <div style="position:absolute; top:315px; left:806px; width:40px; height:40px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#07121a; border:2px solid #ffd21f; border-radius:50%; box-shadow:0 0 14px rgba(255,210,31,0.55)"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; color:#ffd21f; text-align:center">3</p></div>
+  <div style="position:absolute; top:315px; left:996.5px; width:40px; height:40px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#07121a; border:2px solid #ff8a1f; border-radius:50%; box-shadow:0 0 14px rgba(255,138,31,0.55)"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; color:#ff8a1f; text-align:center">4</p></div>
+  <div style="position:absolute; top:332px; left:1178.5px; width:40px; height:40px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#07121a; border:2px solid #ff4d5e; border-radius:50%; box-shadow:0 0 14px rgba(255,77,94,0.55)"><div style="width:16px; height:16px; display:flex; flex-direction:row; align-items:center; justify-content:center; border:2px solid #ff4d5e; border-radius:50%"><div style="width:6px; height:6px; background:#ff4d5e; border-radius:50%"></div></div></div>
+  
+</section>
+
+<section id="passive" class="slide" style="background:#060b10">
+  <img src="assets/d8be33349ff8.jpg" alt="" style="position:absolute; top:0; left:0; width:1920px; height:1080px">
+  <p id="e2-1afqyji" style="position:absolute; top:26px; left:199px; width:84px; font-family:'Exo 2', Arial, sans-serif; font-size:16.9px; font-weight:500; line-height:1.3; color:#9fb0bf">04 / <span style="color:#5d6b77">08</span></p>
+  <p id="e3-1afqyji" style="position:absolute; top:29px; left:421px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">КОНТЕКСТ</p>
+  <p id="e4-1afqyji" style="position:absolute; top:29px; left:527px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">АРХИТЕКТУРА РЕШЕНИЯ</p>
+  <p id="e5-1afqyji" style="position:absolute; top:29px; left:704px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#e8eef3">ПАССИВНАЯ ЗАЩИТА</p>
+  <p id="e6-1afqyji" style="position:absolute; top:29px; left:864px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">АКТИВНАЯ ЗАЩИТА</p>
+  <p id="e7-1afqyji" style="position:absolute; top:29px; left:1018px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">РАЗМЕЩЕНИЕ ОБОРУДОВАНИЯ</p>
+  <p id="e8-1afqyji" style="position:absolute; top:29px; left:1227px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">ЭКОНОМИКА</p>
+  <p id="e9-1afqyji" style="position:absolute; top:29px; left:1343px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">КОНТАКТЫ</p>
+  <div id="e11-1afqyji" style="position:absolute; top:50px; left:704px; width:110px; height:3px; display:flex; flex-direction:column; background:#b6f23a">
+  </div>
+  <p id="e13-1afqyji" style="position:absolute; top:1025px; left:1627px; width:105px; font-family:'Exo 2', Arial, sans-serif; font-size:10px; font-weight:500; line-height:1.3; text-align:right; color:#5d6b77">04 / 08</p>
+  <div id="p05f7940c795er0-b45291ed" style="position:absolute; top:118px; left:198px; width:1524px; height:270px; display:flex; flex-direction:column; gap:12px">
+    <div style="display:flex; flex-direction:row; gap:12px; align-items:center">
+      <div style="width:6px; height:24px; display:flex; flex-direction:column; background:#b6f23a">
+      </div>
+      <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; letter-spacing:1px; color:#9fb0bf">ПАССИВНАЯ ЗАЩИТА</p>
+    </div>
+    <h2 style="font-family:'Exo 2', Arial, sans-serif; font-size:50px; font-weight:800; line-height:1.1; text-transform:uppercase; color:#e8eef3">Инженерные решения для защиты критической<br>инфраструктуры от угроз с воздуха</h2>
+  </div>
+  <div id="a639429b" style="position:absolute; top:388px; left:198px; width:749.98px; display:flex; flex-direction:column; gap:10px; padding:30px; background:#091218d6; border:1px solid #2a3a43; border-radius:14px">
+    <p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#b6f23a">Элементы конструктивных решений ЗОК</p>
+    <ul data-role="h3" style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; color:#e8eef3">
+      <li>Сетки из СВМПЭ</li>
+      <li>Дополнительные защитные сетки</li>
+      <li>Ограждения из стальных тросов&nbsp;</li>
+      <li>Опоры&nbsp;</li>
+      <li>Растяжки</li>
+      <li>Тюфяки/маты&nbsp;</li>
+      <li>Противоосколочные стенки&nbsp;</li>
+    </ul>
+  </div>
+  <p id="p05f7940c795er0_2-b45291ed" style="position:absolute; top:292.48px; left:198px; width:1524px; height:95.54px; font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:500; line-height:1.35; color:#9db4cc"><span style="color:#e8eef3">Выбор уровня защиты объекта осуществляется строго на основании проектного задания и норм СП 542.1325800.2024,</span><br><span style="color:#e8eef3">что гарантирует безусловное соответствие требованиям безопасности</span> <a target="_blank" rel="noopener" href="https://www.minstroyrf.gov.ru/docs/419091/"><span style="color:#b6f23a">https://www.minstroyrf.gov.ru/docs/419091/</span></a></p>
+  <video class="vid" data-src="assets/32b4fa9ece1e.mp4" poster="assets/0a3f38531d88.jpg" data-sound="on" muted loop playsinline preload="metadata" style="position:absolute; top:471.64px; left:989.71px; width:707.86px; height:498px; border-radius:0 0 10px 10px; box-shadow:0 0 0 1px #2a3a43, 0 0 40px #b6f23a22, 0 12px 32px #00000099;object-fit:cover"></video>
+  <img src="assets/6c3d516df3c5.webp" alt="Снимок экрана — 2026-10-23 в 18.54.44.png" style="position:absolute; top:724.61px; left:198px; width:280px; height:245px; border:1px solid #2a3a43; border-radius:14px; box-shadow:0 8px 24px #00000099">
+  <img src="assets/b26635c60d5d.png" alt="Снимок экрана — 2026-10-23 в 19.02.42.png" style="position:absolute; top:724.61px; left:490px; width:458px; height:245px; border:1px solid #2a3a43; border-radius:14px; box-shadow:0 8px 24px #00000099">
+  <div id="452fb5f8" style="position:absolute; top:388.02px; left:989.71px; width:707.86px; height:83.62px; display:flex; flex-direction:column; gap:10px; padding:30px; background:#091218d6; border:1px solid #2a3a43; border-radius:14px 14px 0 0">
+    <p style="width:646px; min-height:41px; font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; letter-spacing:2px; text-align:center; text-transform:uppercase; color:#b6f23a">Испытания ЗОК · <a target="_blank" rel="noopener" href="https://drive.google.com/file/d/179mXPp2iclGVHkAPwn0dxw3Jo8gi1Pig/view?usp=sharing"><span style="color:#e8eef3"><u>смотреть видео</u></span></a></p>
+  </div>
+  
+</section>
+
+<section id="active" class="slide" style="background:#060b10">
+  <img src="assets/d8be33349ff8.jpg" alt="" style="position:absolute; top:0; left:0; width:1920px; height:1080px">
+  <div style="position:absolute; top:118px; left:198px; width:1524px; display:flex; flex-direction:column; gap:12px"><div style="display:flex; flex-direction:row; gap:12px; align-items:center"><div style="width:6px; height:24px; display:flex; flex-direction:column; background:#b6f23a"></div><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; letter-spacing:1px; color:#9fb0bf">АКТИВНАЯ ЗАЩИТА</p></div><h2 style="font-family:'Exo 2', Arial, sans-serif; font-size:50px; font-weight:800; line-height:1.1; text-transform:uppercase; color:#e8eef3">Компоненты системы активной защиты</h2><p style="width:1300px; font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:500; line-height:1.35; color:#9db4cc">Меры прямого воздействия на БПЛА, чтобы прекратить его полёт или выполнение миссии.</p></div>
+  <iframe class="emb" sandbox="allow-scripts" data-srcdoc="&lt;!doctype html&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;body style=&quot;margin:0;background:transparent;overflow:hidden&quot;&gt;&lt;canvas id=&quot;c&quot; width=&quot;3048&quot; height=&quot;740&quot; style=&quot;width:1524px;height:370px;display:block&quot;&gt;&lt;/canvas&gt;&lt;script&gt;
+var c=document.getElementById(&#x27;c&#x27;),g=c.getContext(&#x27;2d&#x27;);g.scale(2,2);
+var P=[{x:282,y:268,c:&#x27;#3aa0ff&#x27;},{x:762,y:270,c:&#x27;#ffd21f&#x27;},{x:1243,y:262,c:&#x27;#ff5a1f&#x27;}],F=&#x27;bold 24px Arial,sans-serif&#x27;,pi=Math.PI;
+function ln(a,b,x,y,col,w,al,d){g.save();g.globalAlpha=al;g.strokeStyle=col;g.lineWidth=w;if(d)g.setLineDash(d);g.beginPath();g.moveTo(a,b);g.lineTo(x,y);g.stroke();g.restore()}
+function rc(x,y,w,h,col){g.fillStyle=col;g.fillRect(x,y,w,h)}
+function box(x,y,w,h,top,side){rc(x,y,w,h,side);g.fillStyle=top;g.beginPath();g.moveTo(x,y);g.lineTo(x+10,y-8);g.lineTo(x+w+10,y-8);g.lineTo(x+w,y);g.fill()}
+function plat(p,a,t){var x=p.x,y=p.y,w=230,h=78,d=16;g.save();
+g.fillStyle=&#x27;#060c13&#x27;;g.beginPath();g.moveTo(x-w,y);g.lineTo(x,y+h);g.lineTo(x+w,y);g.lineTo(x+w,y+d);g.lineTo(x,y+h+d);g.lineTo(x-w,y+d);g.fill();
+function q(u,v){return[x+(u-v)*w,y-h+(u+v)*h]}
+g.beginPath();g.moveTo(x,y-h);g.lineTo(x+w,y);g.lineTo(x,y+h);g.lineTo(x-w,y);g.closePath();g.fillStyle=&#x27;#0c1826&#x27;;g.fill();
+g.save();g.clip();g.strokeStyle=p.c;g.globalAlpha=.22+.3*a;g.lineWidth=1;
+for(var i=1;i&lt;10;i++){var f=i/10,A=q(f,0),B=q(f,1),C=q(0,f),D=q(1,f);g.beginPath();g.moveTo(A[0],A[1]);g.lineTo(B[0],B[1]);g.moveTo(C[0],C[1]);g.lineTo(D[0],D[1]);g.stroke()}
+g.restore();g.strokeStyle=p.c;g.lineWidth=3;g.shadowColor=p.c;g.shadowBlur=6+22*a;g.beginPath();g.moveTo(x,y-h);g.lineTo(x+w,y);g.lineTo(x,y+h);g.lineTo(x-w,y);g.closePath();g.stroke();g.restore()}
+function ell(x,y,r,col,al,w,d){g.save();g.globalAlpha=al;g.strokeStyle=col;g.lineWidth=w;if(d)g.setLineDash(d);g.beginPath();g.ellipse(x,y,r,r*.34,0,0,2*pi);g.stroke();g.restore()}
+function drone(x,y,r,col,al,t){g.save();g.globalAlpha=al;g.translate(x,y);g.rotate(r);
+if(col){var gr=g.createRadialGradient(0,0,2,0,0,60);gr.addColorStop(0,col+&#x27;88&#x27;);gr.addColorStop(1,col+&#x27;00&#x27;);g.fillStyle=gr;g.fillRect(-60,-60,120,120)}
+var R=[[-30,3],[30,3],[-15,-9],[15,-9]];
+for(var i=0;i&lt;4;i++)ln(0,0,R[i][0],R[i][1],&#x27;#2a3a4a&#x27;,3,1);
+g.fillStyle=&#x27;#1b2733&#x27;;g.beginPath();g.ellipse(0,1,13,7,0,0,2*pi);g.fill();g.fillStyle=col||&#x27;#6f8296&#x27;;g.beginPath();g.ellipse(0,-1,8,4,0,0,2*pi);g.fill();
+for(var i=0;i&lt;4;i++){g.fillStyle=&#x27;rgba(165,180,196,&#x27;+(.5+.15*Math.sin(t*50+i))+&#x27;)&#x27;;g.beginPath();g.ellipse(R[i][0],R[i][1]-3,17,4.5,0,0,2*pi);g.fill()}
+g.restore()}
+function plane(x,y,r,col,al,t){g.save();g.globalAlpha=al;g.translate(x,y);g.rotate(r);
+if(col){var gr=g.createRadialGradient(0,0,2,0,0,70);gr.addColorStop(0,col+&#x27;88&#x27;);gr.addColorStop(1,col+&#x27;00&#x27;);g.fillStyle=gr;g.fillRect(-70,-70,140,140)}
+function poly(a,f){g.fillStyle=f;g.beginPath();g.moveTo(a[0][0],a[0][1]);for(var i=1;i&lt;a.length;i++)g.lineTo(a[i][0],a[i][1]);g.closePath();g.fill()}
+poly([[-36,-6],[-27,-6],[-27,-24],[-36,-24]],&#x27;#c9d5df&#x27;);
+poly([[38,0],[-34,-13],[-36,2],[-22,6]],&#x27;#e4ebf1&#x27;);
+poly([[38,1],[-22,6],[-36,2],[-38,15]],&#x27;#2b4560&#x27;);
+poly([[-40,6],[-30,6],[-30,19],[-40,19]],&#x27;#b9c8d4&#x27;);
+var ng=g.createLinearGradient(0,-8,0,8);ng.addColorStop(0,&#x27;#f4f8fb&#x27;);ng.addColorStop(1,&#x27;#a9bccb&#x27;);g.fillStyle=ng;g.beginPath();g.ellipse(28,-1,16,7.5,0,0,2*pi);g.fill();
+g.fillStyle=&#x27;#2b3744&#x27;;g.fillRect(-44,-5,10,11);g.fillStyle=&#x27;#9db0be&#x27;;g.fillRect(-36,-11,6,6);g.fillRect(-36,6,6,6);
+g.fillStyle=&#x27;rgba(170,182,196,&#x27;+(.6+.2*Math.sin(t*50))+&#x27;)&#x27;;g.fillRect(-48,-15,3,32);g.fillStyle=&#x27;#d7b560&#x27;;g.fillRect(-48,-15,3,5);g.fillRect(-48,12,3,5);
+g.restore()}
+function br(x,y,s,col,al){g.save();g.strokeStyle=col;g.globalAlpha=al;g.lineWidth=3;[[-1,-1],[1,-1],[1,1],[-1,1]].forEach(function(k){g.beginPath();g.moveTo(x+k[0]*s,y+k[1]*(s-14));g.lineTo(x+k[0]*s,y+k[1]*s);g.lineTo(x+k[0]*(s-14),y+k[1]*s);g.stroke()});g.restore()}
+function pill(x,txt,col,s){g.font=F;var w=g.measureText(txt).width+32,h=38,l=x-w/2,tp=8;g.save();g.beginPath();g.roundRect(l,tp,w,h,19);
+if(s==1){g.fillStyle=col;g.fill();g.fillStyle=&#x27;#06101a&#x27;}else{g.fillStyle=&#x27;#091218cc&#x27;;g.fill();g.strokeStyle=col;g.globalAlpha=s?1:.5;g.lineWidth=2;g.stroke();g.fillStyle=col;g.globalAlpha=s?1:.6}
+g.textBaseline=&#x27;middle&#x27;;g.textAlign=&#x27;center&#x27;;g.fillText(txt,x,tp+h/2+1);g.restore()}
+var L=14.5,TR=7.6,TJ=8.3,TH=9.9,Y0=100+14*Math.sin(8.5*2.2);
+function tp(t){return t&lt;8.5?[-50+t*1180/8.5,100+14*Math.sin(t*2.2)]:[1130+(t-8.5)*60,Y0]}
+function ip(t){var s=Math.min(1,Math.max(0,(t-TJ)/(TH-TJ)));s=s*s*(3-2*s);var T=tp(t);return[1316+(T[0]-1316)*s,268+(T[1]-268)*s-50*Math.sin(pi*s)]}
+function frame(t){t=t%L;g.clearRect(0,0,1524,370);
+var x,y,r=0,sh=0,dead=0;
+if(t&lt;8.5){x=-50+t*1180/8.5;y=100+14*Math.sin(t*2.2)}else if(t&lt;TH){x=1130+(t-8.5)*60;y=Y0}else{var u=Math.min(1,(t-TH)/.7),X0=1130+(TH-8.5)*60;x=X0+(1318-X0)*u;y=Y0+(226-Y0)*u*u;r=(t-TH)*5;dead=u&gt;=1}
+var z1=x&lt;80?0:x&lt;520?1:2,z2=x&lt;520?0:x&lt;1010?1:2,z3=t&lt;TR?0:t&lt;TH?1:2;
+var al=t&gt;13.5?Math.max(0,1-(t-13.5)):1;
+var tint=t&gt;=TH?&#x27;#ff4d3a&#x27;:z2&gt;=1?&#x27;#ffd21f&#x27;:z1&gt;=1?&#x27;#3aa0ff&#x27;:null;
+if(t&gt;=TR&amp;&amp;t&lt;TH)sh=Math.sin(t*60)*2.5;
+var Z=[z1,z2,z3],AL=[.1,1,.35];
+for(var i=0;i&lt;3;i++)plat(P[i],AL[Z[i]],t);
+// arrows
+[[430,600],[910,1080]].forEach(function(a){g.save();g.strokeStyle=&#x27;#b6f23a&#x27;;g.fillStyle=&#x27;#b6f23a&#x27;;g.lineWidth=3;g.setLineDash([10,8]);g.lineDashOffset=-t*30;g.beginPath();g.moveTo(a[0],262);g.lineTo(a[1]-8,262);g.stroke();g.setLineDash([]);g.beginPath();g.moveTo(a[1],262);g.lineTo(a[1]-12,255);g.lineTo(a[1]-12,269);g.fill();g.restore()});
+// st1
+var p=P[0];[[40,&#x27;#3aa0ff&#x27;],[100,&#x27;#2ee6b0&#x27;],[165,&#x27;#ffd21f&#x27;]].forEach(function(k,i){var ph=((t*.35+i/3)%1);ell(p.x,p.y,k[0]+ph*20,k[1],.9-ph*.4,2,[8,6])});
+box(150,238,44,34,&#x27;#7fa05a&#x27;,&#x27;#4a6b3a&#x27;);ln(172,238,172,200,&#x27;#8aa0b4&#x27;,2,1);
+ln(282,258,282,150,&#x27;#b8c8d8&#x27;,9,1);g.fillStyle=&#x27;#d3dce4&#x27;;g.fillRect(248,134,68,26);g.fillStyle=&#x27;#9aa8b6&#x27;;g.fillRect(248,156,68,4);
+if(z1==0){var an=-pi/2+.7*Math.sin(t*1.6),w=.5;g.save();g.beginPath();g.moveTo(282,140);g.arc(282,140,230,an-w,an+w);g.closePath();var gr=g.createRadialGradient(282,140,10,282,140,230);gr.addColorStop(0,&#x27;#3aa0ff99&#x27;);gr.addColorStop(1,&#x27;#3aa0ff00&#x27;);g.fillStyle=gr;g.fill();g.restore()}
+else{var b=z1==1?1:.2;ln(282,140,x,y,&#x27;#3aa0ff&#x27;,2,b,[10,6]);if(z1==1){var k=(t*1.5)%1;g.save();g.strokeStyle=&#x27;#3aa0ff&#x27;;g.globalAlpha=(1-k)*.8;g.lineWidth=2;g.beginPath();g.arc(x,y,30+k*40,0,2*pi);g.stroke();g.restore();br(x,y,36,&#x27;#3aa0ff&#x27;,al)}}
+// st2
+p=P[1];ell(p.x,p.y,120,&#x27;#ffd21f&#x27;,.5,2,[6,6]);box(630,240,46,36,&#x27;#7fa05a&#x27;,&#x27;#4a6b3a&#x27;);box(790,282,36,28,&#x27;#ffd21f&#x27;,&#x27;#2a3a4a&#x27;);
+ln(762,262,762,178,&#x27;#b8c8d8&#x27;,9,1);[-1,1].forEach(function(s){ln(762+s*24,262,762+s*24,210,&#x27;#a9bccd&#x27;,2,1)});
+g.fillStyle=&#x27;#e6edf3&#x27;;g.fillRect(744,158,36,26);g.beginPath();g.arc(762,150,11,0,2*pi);g.fill();
+var tx,ty;if(z2==0){tx=762+60*Math.cos(t*1.2);ty=60;}else{tx=x;ty=y}
+var ag=Math.atan2(ty-168,tx-762);ln(770,165,770+Math.cos(ag)*34,165+Math.sin(ag)*34,&#x27;#1a2530&#x27;,8,1);
+if(z2==1){for(var i=-2;i&lt;=2;i++)ln(790,165,x+i*13,y+Math.abs(i)*5-5,&#x27;#ffd21f&#x27;,1.5,.8);br(x,y,40,&#x27;#ffd21f&#x27;,al)}else if(z2==2)ln(790,165,x,y,&#x27;#ffd21f&#x27;,1.5,.12,[4,8]);
+// st3
+p=P[2];ell(p.x,p.y,110,&#x27;#ff5a1f&#x27;,.4,2,[6,6]);
+ln(1170,248,1170,150,&#x27;#b8c8d8&#x27;,6,1);g.fillStyle=&#x27;#dfe8f0&#x27;;g.fillRect(1160,132,24,34);
+box(1212,252,62,28,&#x27;#34506b&#x27;,&#x27;#1f3347&#x27;);box(1297,278,38,28,&#x27;#ffd21f&#x27;,&#x27;#2a3a4a&#x27;);box(1220,222,46,32,&#x27;#7fa05a&#x27;,&#x27;#4a6b3a&#x27;);
+var a3=-.6;ln(1243,214,1243+Math.cos(a3)*40,214+Math.sin(a3)*40,&#x27;#1a2530&#x27;,8,1);
+if(z3==1){var ag3=Math.atan2(y-146,x-1172);for(var i=0;i&lt;4;i++){var k=((t*1.1+i/4)%1);g.save();g.strokeStyle=&#x27;#ff5a1f&#x27;;g.globalAlpha=(1-k)*.9;g.lineWidth=3;g.setLineDash([8,6]);g.beginPath();g.arc(1172,146,24+k*150,ag3-.55,ag3+.55);g.stroke();g.restore()}
+ln(1172,146,x+sh,y,&#x27;#ff5a1f&#x27;,1.5,.35,[3,7]);
+g.save();g.strokeStyle=&#x27;#ff4d3a&#x27;;g.lineWidth=3;g.globalAlpha=.9;g.beginPath();var zx=x-34+sh,zy=y-26;g.moveTo(zx,zy);for(var i=1;i&lt;5;i++)g.lineTo(zx+i*7,zy+(i%2?9:-3));g.stroke();g.restore()}
+if(z3==1&amp;&amp;t&gt;=TJ){var q=ip(t),q0=ip(t-.12),dx=tp(t)[0]-q[0],dy=tp(t)[1]-q[1];ln(q0[0],q0[1],q[0],q[1],&#x27;#ffb347&#x27;,5,.7);ln(q0[0],q0[1],q[0],q[1],&#x27;#fff2c0&#x27;,2,.9);
+g.save();g.translate(q[0],q[1]);g.scale(.7,.7);g.translate(-q[0],-q[1]);drone(q[0],q[1],Math.atan2(dy,dx)*.15,&#x27;#ff5a1f&#x27;,1,t);g.restore();br(x,y,34,&#x27;#ff5a1f&#x27;,al)}
+if(t&gt;=TH&amp;&amp;t&lt;TH+.9){var k=(t-TH)/.9,X=x,Y=Y0;g.save();var gr=g.createRadialGradient(X,Y,0,X,Y,20+70*k);gr.addColorStop(0,&#x27;rgba(255,240,190,&#x27;+(1-k)+&#x27;)&#x27;);gr.addColorStop(.5,&#x27;rgba(255,120,30,&#x27;+(.8*(1-k))+&#x27;)&#x27;);gr.addColorStop(1,&#x27;rgba(255,90,30,0)&#x27;);g.fillStyle=gr;g.fillRect(X-100,Y-100,200,200);g.restore();
+for(var i=0;i&lt;12;i++){var an=i*pi/6+.2;ln(X+Math.cos(an)*(18+k*60),Y+Math.sin(an)*(18+k*60),X+Math.cos(an)*(30+k*85),Y+Math.sin(an)*(30+k*85),&#x27;#ffd21f&#x27;,3,1-k)}}
+// drone
+if(!dead)plane(x+sh,y,r,tint,al,t);
+// pills
+var d=Math.round(20-(x-80)/440*12);
+pill(282,z1==0?&#x27;СКАНИРОВАНИЕ…&#x27;:z1==2?&#x27;ЦЕЛЬ ОБНАРУЖЕНА&#x27;:&#x27;ЦЕЛЬ ОБНАРУЖЕНА · &#x27;+d+&#x27; км&#x27;,&#x27;#3aa0ff&#x27;,z1);
+pill(762,z2==0?&#x27;ОЖИДАНИЕ ЦЕЛИ&#x27;:z2==2?&#x27;ЦЕЛЬ ОПОЗНАНА&#x27;:&#x27;ДРОН · АТАКА&#x27;,&#x27;#ffd21f&#x27;,z2);
+pill(1243,z3==0?&#x27;ГОТОВНОСТЬ&#x27;:t&lt;TJ?&#x27;РЭБ ПОДАВЛЯЕТ СВЯЗЬ&#x27;:t&lt;TH?&#x27;РЭБ + ПЕРЕХВАТЧИК&#x27;:&#x27;ЦЕЛЬ СБИТА&#x27;,&#x27;#ff5a1f&#x27;,z3==0?0:t&lt;TH?1:2)}
+var fix=null;function loop(ms){frame(fix!==null?fix:ms/1000);requestAnimationFrame(loop)}requestAnimationFrame(loop)
+&lt;/script&gt;
+
+" style="position:absolute; top:268px; left:198px; width:1524px; height:370px;border:0"></iframe>
+  <div style="position:absolute; top:636px; left:198px; width:468px; display:flex; flex-direction:column; gap:6px"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:700; letter-spacing:2px; line-height:1.2; color:#b6f23a">ЭТАП 1</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:38px; font-weight:800; line-height:1.15; text-transform:uppercase; color:#3aa0ff">Обнаружение</p><div style="display:flex; flex-direction:column; gap:0px; margin-top:0"><div style="display:flex; flex-direction:row; align-items:center; gap:12px; padding:5px 0; border-bottom:1px solid #2a3a43"><div style="width:14px; height:14px; display:flex; flex-direction:column; background:#3aa0ff; border-radius:50%"></div><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:600; line-height:1.2; flex:1; color:#e8eef3">Радиолокация</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:800; line-height:1.2; color:#3aa0ff">до 20 км</p></div><div style="display:flex; flex-direction:row; align-items:center; gap:12px; padding:5px 0; border-bottom:1px solid #2a3a43"><div style="width:14px; height:14px; display:flex; flex-direction:column; background:#2ee6b0; border-radius:50%"></div><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:600; line-height:1.2; flex:1; color:#e8eef3">Радиомониторинг</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:800; line-height:1.2; color:#2ee6b0">до 5 км</p></div><div style="display:flex; flex-direction:row; align-items:center; gap:12px; padding:5px 0; border-bottom:1px solid #2a3a43"><div style="width:14px; height:14px; display:flex; flex-direction:column; background:#ffd21f; border-radius:50%"></div><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:600; line-height:1.2; flex:1; color:#e8eef3">Оптико-электронные</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:800; line-height:1.2; color:#ffd21f">до 3 км</p></div><div style="display:flex; flex-direction:row; align-items:center; gap:12px; padding:5px 0; border-bottom:1px solid #2a3a43"><div style="width:14px; height:14px; display:flex; flex-direction:column; background:#ff8a1f; border-radius:50%"></div><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:600; line-height:1.2; flex:1; color:#e8eef3">Акустические</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:800; line-height:1.2; color:#ff8a1f">до 500 м</p></div></div></div>
+  <div style="position:absolute; top:636px; left:726px; width:468px; display:flex; flex-direction:column; gap:6px"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:700; letter-spacing:2px; line-height:1.2; color:#b6f23a">ЭТАП 2</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:38px; font-weight:800; line-height:1.15; text-transform:uppercase; color:#ffd21f">Идентификация</p><div style="display:flex; flex-direction:column; gap:0px; margin-top:0"><div style="display:flex; flex-direction:column; gap:0px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.15; color:#ffd21f">Тип дрона</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.15; color:#9fb0bf">коммерческий, FPV, самодельный</p></div><div style="display:flex; flex-direction:column; gap:0px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.15; color:#ffd21f">Частоты</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.15; color:#9fb0bf">определение используемых частот</p></div><div style="display:flex; flex-direction:column; gap:0px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.15; color:#ffd21f">Поведение</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.15; color:#9fb0bf">разведка, атака, случайный</p></div></div></div>
+  <div style="position:absolute; top:636px; left:1254px; width:468px; display:flex; flex-direction:column; gap:6px"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:700; letter-spacing:2px; line-height:1.2; color:#b6f23a">ЭТАП 3</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:38px; font-weight:800; line-height:1.15; text-transform:uppercase; color:#ff8a1f">Нейтрализация</p><div style="display:flex; flex-direction:column; gap:0px; margin-top:0"><div style="display:flex; flex-direction:column; gap:0px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.15; color:#ff8a1f">РЭБ</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.15; color:#9fb0bf">подавление сигналов управления</p></div><div style="display:flex; flex-direction:column; gap:0px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.15; color:#ff8a1f">Кинетика</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.15; color:#9fb0bf">оружие и перехватчики</p></div><div style="display:flex; flex-direction:column; gap:0px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.15; color:#ff8a1f">Лазер и СВЧ</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.15; color:#9fb0bf">вывод из строя электроники</p></div><div style="display:flex; flex-direction:column; gap:0px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.15; color:#ff8a1f">Спуфинг</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.15; color:#9fb0bf">подмена сигналов навигации</p></div></div></div>
+  <p style="position:absolute; top:26px; left:199px; width:84px; font-family:'Exo 2', Arial, sans-serif; font-size:16.9px; font-weight:500; line-height:1.3; color:#9fb0bf">05 / <span style="color:#5d6b77">08</span></p>
+  <p style="position:absolute; top:29px; left:421px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">КОНТЕКСТ</p>
+  <p style="position:absolute; top:29px; left:527px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">АРХИТЕКТУРА РЕШЕНИЯ</p>
+  <p style="position:absolute; top:29px; left:704px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">ПАССИВНАЯ ЗАЩИТА</p>
+  <p style="position:absolute; top:29px; left:864px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#e8eef3">АКТИВНАЯ ЗАЩИТА</p>
+  <p style="position:absolute; top:29px; left:1018px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">РАЗМЕЩЕНИЕ ОБОРУДОВАНИЯ</p>
+  <p style="position:absolute; top:29px; left:1227px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">ЭКОНОМИКА</p>
+  <p style="position:absolute; top:29px; left:1343px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">КОНТАКТЫ</p>
+  <div style="position:absolute; top:50px; left:864px; width:103px; height:3px; display:flex; flex-direction:column; background:#b6f23a">
+  </div>
+  <p id="e13-1oc52r3" style="position:absolute; top:1025px; left:1627px; width:105px; font-family:'Exo 2', Arial, sans-serif; font-size:10px; font-weight:500; line-height:1.3; text-align:right; color:#5d6b77">05 / 08</p>
+  
+</section>
+
+<section id="place" class="slide" style="background:#060b10">
+  <img src="assets/d8be33349ff8.jpg" alt="" style="position:absolute; top:0; left:0; width:1920px; height:1080px">
+  <div style="position:absolute; top:118px; left:198px; width:1524px; display:flex; flex-direction:column; gap:12px">
+    <div style="display:flex; flex-direction:row; gap:12px; align-items:center">
+      <div style="width:6px; height:24px; display:flex; flex-direction:column; background:#b6f23a">
+      </div>
+      <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; letter-spacing:1px; color:#9fb0bf">РАЗМЕЩЕНИЕ ОБОРУДОВАНИЯ</p>
+    </div>
+    <h2 style="font-family:'Exo 2', Arial, sans-serif; font-size:50px; font-weight:800; line-height:1.1; text-transform:uppercase; color:#e8eef3">Варианты размещения оборудования</h2>
+  </div>
+  <video class="vid" data-src="assets/20588b3ef161.mp4" poster="assets/490644c7b803.jpg" data-sound="off" muted loop playsinline preload="metadata" style="position:absolute; top:270px; left:185px; width:762px; height:400px;object-fit:cover"></video>
+  <video class="vid" data-src="assets/ad8842d76149.mp4" poster="assets/46634cbd916b.jpg" data-sound="off" muted loop playsinline preload="metadata" style="position:absolute; top:270px; left:972px; width:762px; height:400px;object-fit:cover"></video>
+  <div style="position:absolute; top:322px; left:811px; width:40px; height:40px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#07121a; border:2px solid #b6f23a; border-radius:256px; box-shadow:0 0 14px #b6f23a88">
+    <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; text-align:center; color:#b6f23a">1</p>
+  </div>
+  <div style="position:absolute; top:325px; left:595px; width:40px; height:40px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#07121a; border:2px solid #b6f23a; border-radius:256px; box-shadow:0 0 14px #b6f23a88">
+    <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; text-align:center; color:#b6f23a">2</p>
+  </div>
+  <div style="position:absolute; top:408px; left:752px; width:40px; height:40px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#07121a; border:2px solid #b6f23a; border-radius:256px; box-shadow:0 0 14px #b6f23a88">
+    <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; text-align:center; color:#b6f23a">3</p>
+  </div>
+  <div style="position:absolute; top:318px; left:1177px; width:40px; height:40px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#07121a; border:2px solid #3aa0ff; border-radius:256px; box-shadow:0 0 14px #3aa0ff88">
+    <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; text-align:center; color:#3aa0ff">1</p>
+  </div>
+  <div style="position:absolute; top:458px; left:1397px; width:40px; height:40px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#07121a; border:2px solid #3aa0ff; border-radius:256px; box-shadow:0 0 14px #3aa0ff88">
+    <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; text-align:center; color:#3aa0ff">2</p>
+  </div>
+  <div style="position:absolute; top:348px; left:1488px; width:40px; height:40px; display:flex; flex-direction:row; align-items:center; justify-content:center; background:#07121a; border:2px solid #3aa0ff; border-radius:256px; box-shadow:0 0 14px #3aa0ff88">
+    <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; text-align:center; color:#3aa0ff">3</p>
+  </div>
+  <div style="position:absolute; top:690px; left:198px; width:738px; display:flex; flex-direction:column; gap:2px">
+    <p style="font-family:'Exo 2', Arial, sans-serif; font-size:38px; font-weight:800; line-height:1.15; text-transform:uppercase; color:#b6f23a">Стационарный</p>
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:center; padding:13px 0; border-bottom:1px solid #2a3a43">
+      <div style="width:36px; height:36px; display:flex; flex-direction:row; align-items:center; justify-content:center; border:2px solid #b6f23a; border-radius:256px">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; color:#b6f23a">1</p>
+      </div>
+      <div style="display:flex; flex-direction:column; flex:1">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:30px; font-weight:700; line-height:1.15; color:#e8eef3">Мачта или вышка</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:center; padding:13px 0; border-bottom:1px solid #2a3a43">
+      <div style="width:36px; height:36px; display:flex; flex-direction:row; align-items:center; justify-content:center; border:2px solid #b6f23a; border-radius:256px">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; color:#b6f23a">2</p>
+      </div>
+      <div style="display:flex; flex-direction:column; flex:1">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:30px; font-weight:700; line-height:1.15; color:#e8eef3">Кровля или фасад здания</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:center; padding:13px 0; border-bottom:1px solid #2a3a43">
+      <div style="width:36px; height:36px; display:flex; flex-direction:row; align-items:center; justify-content:center; border:2px solid #b6f23a; border-radius:256px">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; color:#b6f23a">3</p>
+      </div>
+      <div style="display:flex; flex-direction:column; flex:1">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:30px; font-weight:700; line-height:1.15; color:#e8eef3">Единый пост управления</p>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; top:690px; left:984px; width:738px; display:flex; flex-direction:column; gap:2px">
+    <p style="font-family:'Exo 2', Arial, sans-serif; font-size:38px; font-weight:800; line-height:1.15; text-transform:uppercase; color:#3aa0ff">Мобильный</p>
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:center; padding:13px 0; border-bottom:1px solid #2a3a43">
+      <div style="width:36px; height:36px; display:flex; flex-direction:row; align-items:center; justify-content:center; border:2px solid #3aa0ff; border-radius:256px">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; color:#3aa0ff">1</p>
+      </div>
+      <div style="display:flex; flex-direction:column; flex:1">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:30px; font-weight:700; line-height:1.15; color:#e8eef3">Шасси автомобиля</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:center; padding:13px 0; border-bottom:1px solid #2a3a43">
+      <div style="width:36px; height:36px; display:flex; flex-direction:row; align-items:center; justify-content:center; border:2px solid #3aa0ff; border-radius:256px">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; color:#3aa0ff">2</p>
+      </div>
+      <div style="display:flex; flex-direction:column; flex:1">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:30px; font-weight:700; line-height:1.15; color:#e8eef3">Переносной узел</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:center; padding:13px 0; border-bottom:1px solid #2a3a43">
+      <div style="width:36px; height:36px; display:flex; flex-direction:row; align-items:center; justify-content:center; border:2px solid #3aa0ff; border-radius:256px">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:800; line-height:1; color:#3aa0ff">3</p>
+      </div>
+      <div style="display:flex; flex-direction:column; flex:1">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:30px; font-weight:700; line-height:1.15; color:#e8eef3">МОГ / Расчет БПЛА</p>
+      </div>
+    </div>
+  </div>
+  <p style="position:absolute; top:26px; left:199px; width:84px; font-family:'Exo 2', Arial, sans-serif; font-size:16.9px; font-weight:500; line-height:1.3; color:#9fb0bf">06 / <span style="color:#5d6b77">08</span></p>
+  <p style="position:absolute; top:29px; left:421px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">КОНТЕКСТ</p>
+  <p style="position:absolute; top:29px; left:527px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">АРХИТЕКТУРА РЕШЕНИЯ</p>
+  <p style="position:absolute; top:29px; left:704px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">ПАССИВНАЯ ЗАЩИТА</p>
+  <p style="position:absolute; top:29px; left:864px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">АКТИВНАЯ ЗАЩИТА</p>
+  <p style="position:absolute; top:29px; left:1018px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#e8eef3">РАЗМЕЩЕНИЕ ОБОРУДОВАНИЯ</p>
+  <p style="position:absolute; top:29px; left:1227px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">ЭКОНОМИКА</p>
+  <p style="position:absolute; top:29px; left:1343px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">КОНТАКТЫ</p>
+  <div style="position:absolute; top:50px; left:1018px; width:158px; height:3px; display:flex; flex-direction:column; background:#b6f23a">
+  </div>
+  <p id="e13-1oc52r3" style="position:absolute; top:1025px; left:1627px; width:105px; font-family:'Exo 2', Arial, sans-serif; font-size:10px; font-weight:500; line-height:1.3; text-align:right; color:#5d6b77">06 / 08</p>
+  
+</section>
+
+<section id="econ" class="slide" style="background:#060b10">
+  <img src="assets/d8be33349ff8.jpg" alt="" style="position:absolute; top:0; left:0; width:1920px; height:1080px">
+  <div style="position:absolute; top:118px; left:198px; width:1524px; display:flex; flex-direction:column; gap:12px"><div style="display:flex; flex-direction:row; gap:12px; align-items:center"><div style="width:6px; height:24px; display:flex; flex-direction:column; background:#b6f23a"></div><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; letter-spacing:1px; color:#9fb0bf">ЭКОНОМИКА</p></div><h2 style="font-family:'Exo 2', Arial, sans-serif; font-size:50px; font-weight:800; line-height:1.1; color:#e8eef3">ДВЕ МОДЕЛИ РЕАЛИЗАЦИИ</h2><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:500; line-height:1.35; color:#9db4cc">Расчёт стоимости владения: поставка комплексов и аутсорсинг защиты.</p></div>
+  <div style="position:absolute; top:272px; left:198px; width:744px; height:500px; display:flex; flex-direction:column; gap:6px; padding:22px 28px; background:#091218d6; border:1px solid #2a3a43; border-radius:14px; border-top:4px solid #b6f23a"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:700; letter-spacing:2px; line-height:1.2; color:#b6f23a">ВАРИАНТ 1</p><h3 style="font-family:'Exo 2', Arial, sans-serif; font-size:34px; font-weight:700; line-height:1.15; color:#e8eef3">Поставка комплексов</h3><div style="display:flex; flex-direction:column; flex:1"><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#cfd9e1">Оборудование и ПО (РЛС, РЭБ, ОЭС)</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; white-space:nowrap; color:#e8eef3">22<span style="font-size:22px; font-weight:500; color:#9fb0bf"> млн ₽</span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#cfd9e1">Проектирование, монтаж, обучение</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; white-space:nowrap; color:#e8eef3">8<span style="font-size:22px; font-weight:500; color:#9fb0bf"> млн ₽</span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:8px 14px; margin-top:4px; background:#0e1d25; border:1px solid #b6f23a55; border-radius:10px"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:700; line-height:1.2; color:#e8eef3">Единовременно</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:28px; font-weight:800; line-height:1.2; white-space:nowrap; color:#b6f23a">30<span style="font-size:22px; font-weight:500; color:#9fb0bf"> млн ₽</span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#cfd9e1">Дежурные расчёты (персонал)</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; white-space:nowrap; color:#e8eef3">6<span style="font-size:22px; font-weight:500; color:#9fb0bf"> млн ₽/год</span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#cfd9e1">Обслуживание, запчасти, ПО</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; white-space:nowrap; color:#e8eef3">4<span style="font-size:22px; font-weight:500; color:#9fb0bf"> млн ₽/год</span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#cfd9e1">Связь, энергия, расходные</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; white-space:nowrap; color:#e8eef3">2<span style="font-size:22px; font-weight:500; color:#9fb0bf"> млн ₽/год</span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:8px 14px; margin-top:4px; background:#0e1d25; border:1px solid #b6f23a55; border-radius:10px"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:700; line-height:1.2; color:#e8eef3">Эксплуатация</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:28px; font-weight:800; line-height:1.2; white-space:nowrap; color:#b6f23a">12<span style="font-size:22px; font-weight:500; color:#9fb0bf"> млн ₽/год</span></p></div></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding-top:10px; border-top:2px solid #b6f23a"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:700; line-height:1.2; letter-spacing:1px; color:#9fb0bf">ИТОГО ЗА 5 ЛЕТ</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:52px; font-weight:800; line-height:1.05; color:#b6f23a">90<span style="font-size:26px; font-weight:600; color:#9fb0bf"> млн ₽</span></p></div></div>
+  <div style="position:absolute; top:272px; left:978px; width:744px; height:500px; display:flex; flex-direction:column; gap:6px; padding:22px 28px; background:#091218d6; border:1px solid #2a3a43; border-radius:14px; border-top:4px solid #3aa0ff"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:700; letter-spacing:2px; line-height:1.2; color:#3aa0ff">ВАРИАНТ 2</p><h3 style="font-family:'Exo 2', Arial, sans-serif; font-size:34px; font-weight:700; line-height:1.15; color:#e8eef3">Аутсорсинг защиты</h3><div style="display:flex; flex-direction:column; flex:1"><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#cfd9e1">Аренда оборудования</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; white-space:nowrap; color:#e8eef3">8<span style="font-size:22px; font-weight:500; color:#9fb0bf"> млн ₽/год</span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#cfd9e1">Эксплуатация и персонал</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; white-space:nowrap; color:#e8eef3">12<span style="font-size:22px; font-weight:500; color:#9fb0bf"> млн ₽/год</span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#cfd9e1">SLA, поддержка 24/7, резерв</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; white-space:nowrap; color:#e8eef3">4<span style="font-size:22px; font-weight:500; color:#9fb0bf"> млн ₽/год</span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:8px 14px; margin-top:4px; background:#0e1d25; border:1px solid #3aa0ff55; border-radius:10px"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:700; line-height:1.2; color:#e8eef3">Абонентская плата</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:28px; font-weight:800; line-height:1.2; white-space:nowrap; color:#3aa0ff">24<span style="font-size:22px; font-weight:500; color:#9fb0bf"> млн ₽/год</span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#cfd9e1">Развёртывание и обучение</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; white-space:nowrap; color:#e8eef3">включено<span style="font-size:22px; font-weight:500; color:#9fb0bf"></span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#cfd9e1">Срок договора</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; white-space:nowrap; color:#e8eef3">5<span style="font-size:22px; font-weight:500; color:#9fb0bf"> лет</span></p></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:16px; padding:5px 0; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#cfd9e1">Владение оборудованием</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:700; line-height:1.2; white-space:nowrap; color:#e8eef3">остаётся у подрядчика<span style="font-size:22px; font-weight:500; color:#9fb0bf"></span></p></div></div><div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding-top:10px; border-top:2px solid #3aa0ff"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:700; line-height:1.2; letter-spacing:1px; color:#9fb0bf">ИТОГО ЗА 5 ЛЕТ</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:52px; font-weight:800; line-height:1.05; color:#3aa0ff">120<span style="font-size:26px; font-weight:600; color:#9fb0bf"> млн ₽</span></p></div></div>
+  <div style="position:absolute; top:788px; left:198px; width:940px; height:172px; display:flex; flex-direction:column; padding:8px 0; background:#091218d6; border:1px solid #2a3a43; border-radius:14px; padding-left:20px; padding-right:20px"><div style="display:flex; flex-direction:row; align-items:center; height:40px; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; line-height:1.2; width:300px; color:#9fb0bf">Накопленные, млн ₽</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; line-height:1.2; text-align:center; width:128px; color:#9fb0bf">Год 1</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; line-height:1.2; text-align:center; width:128px; color:#9fb0bf">Год 2</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; line-height:1.2; text-align:center; width:128px; color:#9fb0bf">Год 3</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; line-height:1.2; text-align:center; width:128px; color:#9fb0bf">Год 4</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; line-height:1.2; text-align:center; width:128px; color:#9fb0bf">Год 5</p></div><div style="display:flex; flex-direction:row; align-items:center; height:44px; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:700; line-height:1.2; width:300px; color:#b6f23a">Поставка</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:500; line-height:1.2; text-align:center; width:128px; color:#9fb0bf">42</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:500; line-height:1.2; text-align:center; width:128px; color:#9fb0bf">54</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:800; line-height:1.2; text-align:center; width:128px; color:#b6f23a">66</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:800; line-height:1.2; text-align:center; width:128px; color:#b6f23a">78</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:800; line-height:1.2; text-align:center; width:128px; color:#b6f23a">90</p></div><div style="display:flex; flex-direction:row; align-items:center; height:44px; border-bottom:1px solid #2a3a43"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:700; line-height:1.2; width:300px; color:#3aa0ff">Аутсорсинг</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:800; line-height:1.2; text-align:center; width:128px; color:#3aa0ff">24</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:800; line-height:1.2; text-align:center; width:128px; color:#3aa0ff">48</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:500; line-height:1.2; text-align:center; width:128px; color:#9fb0bf">72</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:500; line-height:1.2; text-align:center; width:128px; color:#9fb0bf">96</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:500; line-height:1.2; text-align:center; width:128px; color:#9fb0bf">120</p></div></div>
+  <div style="position:absolute; top:788px; left:1158px; width:272px; height:172px; display:flex; flex-direction:column; justify-content:center; gap:4px; padding:0 22px; background:#091218d6; border:1px solid #2a3a43; border-radius:14px; border-top:4px solid #b6f23a"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:44px; font-weight:800; line-height:1.05; color:#b6f23a">≈ 2,5 года</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#9fb0bf">точка равенства затрат</p></div>
+  <div style="position:absolute; top:788px; left:1450px; width:272px; height:172px; display:flex; flex-direction:column; justify-content:center; gap:4px; padding:0 22px; background:#091218d6; border:1px solid #2a3a43; border-radius:14px; border-top:4px solid #b6f23a"><p style="font-family:'Exo 2', Arial, sans-serif; font-size:44px; font-weight:800; line-height:1.05; color:#b6f23a">−30 млн ₽</p><p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#9fb0bf">выгода поставки за 5 лет</p></div>
+  <p style="position:absolute; top:968px; left:198px; width:1524px; font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.3; color:#9fb0bf">Демонстрационный расчёт без НДС и индексации, не коммерческое предложение.</p>
+  <p style="position:absolute;left:199px;top:26px;width:84px;font-size:16.9px;line-height:1.3;font-weight:500;color:#9fb0bf;text-align:left;">07 / <span style="color:#5d6b77">08</span></p><p style="position:absolute;left:421px;top:29px;width:243px;font-size:11.6px;line-height:1.3;font-weight:600;color:#9fb0bf;text-align:left;">КОНТЕКСТ</p><p style="position:absolute;left:527px;top:29px;width:243px;font-size:11.6px;line-height:1.3;font-weight:600;color:#9fb0bf;text-align:left;">АРХИТЕКТУРА РЕШЕНИЯ</p><p style="position:absolute;left:704px;top:29px;width:243px;font-size:11.6px;line-height:1.3;font-weight:600;color:#9fb0bf;text-align:left;">ПАССИВНАЯ ЗАЩИТА</p><p style="position:absolute;left:864px;top:29px;width:243px;font-size:11.6px;line-height:1.3;font-weight:600;color:#9fb0bf;text-align:left;">АКТИВНАЯ ЗАЩИТА</p><p style="position:absolute;left:1018px;top:29px;width:243px;font-size:11.6px;line-height:1.3;font-weight:600;color:#9fb0bf;text-align:left;">РАЗМЕЩЕНИЕ ОБОРУДОВАНИЯ</p><p style="position:absolute;left:1227px;top:29px;width:243px;font-size:11.6px;line-height:1.3;font-weight:600;color:#e8eef3;text-align:left;">ЭКОНОМИКА</p><p style="position:absolute;left:1343px;top:29px;width:243px;font-size:11.6px;line-height:1.3;font-weight:600;color:#9fb0bf;text-align:left;">КОНТАКТЫ</p><div style="position:absolute;left:1227px;top:50px;width:62px;height:3px;background:#b6f23a"></div><p style="position:absolute;left:1627px;top:1025px;width:105px;font-size:10.0px;line-height:1.3;font-weight:500;color:#5d6b77;text-align:right;">07 / 08</p>
+  
+</section>
+
+<section id="contacts" class="slide" style="background:#060b10">
+  <img src="assets/d8be33349ff8.jpg" alt="" style="position:absolute; top:0; left:0; width:1920px; height:1080px">
+  <div style="position:absolute; top:118px; left:198px; width:1524px; display:flex; flex-direction:column; gap:12px">
+    <div style="display:flex; flex-direction:row; gap:12px; align-items:center">
+      <div style="width:6px; height:24px; display:flex; flex-direction:column; background:#b6f23a">
+      </div>
+      <p style="font-family:'Exo 2', Arial, sans-serif; font-size:22px; font-weight:600; letter-spacing:1px; color:#9fb0bf">КОНТАКТЫ</p>
+    </div>
+    <h2 style="font-family:'Exo 2', Arial, sans-serif; font-size:50px; font-weight:800; line-height:1.1; color:#e8eef3">ОТ КОНЦЕПЦИИ К ПРОЕКТУ ОБЪЕКТА</h2>
+    <p style="font-family:'Exo 2', Arial, sans-serif; font-size:26px; font-weight:500; line-height:1.35; color:#9db4cc">Начнём с обследования площадки и согласования целевых показателей.</p>
+  </div>
+  <div style="position:absolute; top:290px; left:198px; width:1000px; height:640px; display:flex; flex-direction:column; gap:26px; padding:38px 40px; background:#091218d6; border:1px solid #2a3a43; border-radius:14px; border-top:4px solid #b6f23a">
+    <div style="display:flex; flex-direction:row; gap:40px; align-items:center">
+      <img src="assets/eaa2a9efc181.png" alt="Рогожин Данил Игоревич" style="width:230px; height:230px; border:4px solid #b6f23a; border-radius:256px; box-shadow:0 0 28px #b6f23a55">
+      <div style="display:flex; flex-direction:column; gap:8px; flex:1">
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:700; line-height:1.2; letter-spacing:2px; color:#b6f23a">РУКОВОДИТЕЛЬ ПРОЕКТА</p>
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:46px; font-weight:800; line-height:1.1; color:#e8eef3">Рогожин Данил Игоревич</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column">
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:center; padding:18px 0; border-bottom:1px solid #2a3a43">
+        <p style="width:150px; font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#9fb0bf">Телефон</p>
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:32px; font-weight:600; line-height:1.2; color:#e8eef3">+7 925 488 0401</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:center; padding:18px 0; border-bottom:1px solid #2a3a43">
+        <p style="width:150px; font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#9fb0bf">Email</p>
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:32px; font-weight:600; line-height:1.2; color:#e8eef3">rdi.info@yandex.ru</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:center; padding:10px 0">
+        <p style="width:150px; font-family:'Exo 2', Arial, sans-serif; font-size:24px; font-weight:400; line-height:1.2; color:#9fb0bf">Telegram</p>
+        <p style="font-family:'Exo 2', Arial, sans-serif; font-size:32px; font-weight:600; line-height:1.2; color:#e8eef3">@D_L_R_N</p>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; top:290px; left:1222px; width:500px; height:640px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#091218d6; border:1px solid #2a3a43; border-radius:14px; border-top:4px solid #3aa0ff">
+    <div style="width:430px; height:478px; border-radius:22px;overflow:hidden"><img src="assets/389db1952ae0.jpg" alt="IMG_4126.JPG" style="width:100%;height:100%;object-fit:cover;object-position:49.415% 50.046%;transform:scale(1.3509);transform-origin:49.415% 50.046%"></div>
+  </div>
+  <p id="e8-1leaeb4" style="position:absolute; top:26px; left:199px; width:84px; font-family:'Exo 2', Arial, sans-serif; font-size:16.9px; font-weight:500; line-height:1.3; color:#9fb0bf">08 / <span style="color:#5d6b77">08</span></p>
+  <p id="e9-1leaeb4" style="position:absolute; top:29px; left:421px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">КОНТЕКСТ</p>
+  <p id="e10-1leaeb4" style="position:absolute; top:29px; left:527px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">АРХИТЕКТУРА РЕШЕНИЯ</p>
+  <p id="e11-1leaeb4" style="position:absolute; top:29px; left:704px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">ПАССИВНАЯ ЗАЩИТА</p>
+  <p id="e12-1leaeb4" style="position:absolute; top:29px; left:864px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">АКТИВНАЯ ЗАЩИТА</p>
+  <p id="e13-1leaeb4" style="position:absolute; top:29px; left:1018px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">РАЗМЕЩЕНИЕ ОБОРУДОВАНИЯ</p>
+  <p id="e14-1leaeb4" style="position:absolute; top:29px; left:1227px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#9fb0bf">ЭКОНОМИКА</p>
+  <p id="e15-1leaeb4" style="position:absolute; top:29px; left:1343px; width:243px; font-family:'Exo 2', Arial, sans-serif; font-size:11.6px; font-weight:600; line-height:1.3; color:#e8eef3">КОНТАКТЫ</p>
+  <div id="e16-1leaeb4" style="position:absolute; top:50px; left:1343px; width:55px; height:3px; display:flex; flex-direction:column; background:#b6f23a">
+  </div>
+  <p id="e17-1leaeb4" style="position:absolute; top:1025px; left:1627px; width:105px; font-family:'Exo 2', Arial, sans-serif; font-size:10px; font-weight:500; line-height:1.3; text-align:right; color:#5d6b77">08 / 08</p>
+  
+</section>
+</div><div id="ui"><button id="prev">←</button><span id="cnt"></span><button id="next">→</button><button id="full">⛶</button></div><script>(function(){var S=[].slice.call(document.querySelectorAll('section.slide')),st=document.getElementById('stage'),n=S.length,cur=-1;
+function fit(){var k=Math.min(innerWidth/1920,innerHeight/1080);st.style.transform='scale('+k+')'}
+function leave(el){el.querySelectorAll('iframe.emb').forEach(function(f){f.removeAttribute('srcdoc')});el.querySelectorAll('video').forEach(function(v){v.pause();try{v.currentTime=0}catch(e){}})}
+function hint(v,on){var h=v._h;if(!on){if(h)h.style.display='none';return}
+ if(!h){h=document.createElement('div');h.style.cssText=v.style.cssText.replace(/object-fit[^;]*;?/,'')+';display:flex;align-items:center;justify-content:center;background:#060b1088;cursor:pointer;z-index:5';h.innerHTML='<div style="display:flex;align-items:center;gap:14px;padding:14px 26px;border-radius:40px;background:#091218dd;border:2px solid #b6f23a;color:#e8eef3;font:700 26px Arial,sans-serif"><span style="color:#b6f23a;font-size:34px">▶</span>Запустить анимацию</div>';h.onclick=function(e){e.stopPropagation();tryPlay(v)};v.parentNode.appendChild(h);v._h=h}
+ h.style.display='flex'}
+function tryPlay(v){if(!v.src)v.src=v.getAttribute('data-src');v.muted=v.getAttribute('data-sound')!=='on';var p=v.play();
+ var bad=function(){v.muted=true;var q=v.play();if(q&&q.then)q.then(function(){hint(v,false)},function(){hint(v,true)});else hint(v,true)};
+ if(p&&p.then)p.then(function(){hint(v,false)},bad);else if(v.paused)bad()}
+function enter(el){el.querySelectorAll('iframe.emb').forEach(function(f){f.srcdoc=f.getAttribute('data-srcdoc')});
+ el.querySelectorAll('video').forEach(tryPlay)}
+function again(){if(cur<0)return;S[cur].querySelectorAll('video').forEach(function(v){if(v.paused)tryPlay(v);else if(v.getAttribute('data-sound')==='on'&&v.muted){v.muted=false;if(v.muted)v.muted=true}})}
+['pointerdown','keydown','touchend'].forEach(function(t){addEventListener(t,function(){setTimeout(again,0)},true)});
+function go(i){i=Math.max(0,Math.min(n-1,i));if(i===cur)return;if(cur>=0){S[cur].classList.remove('on');leave(S[cur])}cur=i;S[cur].classList.add('on');enter(S[cur]);document.getElementById('cnt').textContent=(cur+1)+' / '+n;try{history.replaceState(null,'','#'+(cur+1))}catch(e){}}
+addEventListener('resize',fit);fit();
+function chkf(){try{if(!document.fonts.check("16px 'Exo 2'"))document.body.classList.add('nofont');else document.body.classList.remove('nofont')}catch(e){}}
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(chkf);setTimeout(chkf,2500)}else chkf();
+addEventListener('keydown',function(e){var k=e.key;if(k==='ArrowRight'||k==='PageDown'||k===' '||k==='Enter'){go(cur+1);e.preventDefault()}else if(k==='ArrowLeft'||k==='PageUp'||k==='Backspace'){go(cur-1);e.preventDefault()}else if(k==='Home')go(0);else if(k==='End')go(n-1);else if(k==='f'||k==='F')fs()});
+function fs(){var d=document.documentElement;if(document.fullscreenElement)document.exitFullscreen();else if(d.requestFullscreen)d.requestFullscreen()}
+st.addEventListener('click',function(e){if(e.target.closest('a'))return;var v=e.target.closest('video');if(v){if(v.paused)v.play();else v.pause();return}var r=st.getBoundingClientRect();go(cur+((e.clientX-r.left)/r.width<.25?-1:1))});
+var tx=null;addEventListener('touchstart',function(e){tx=e.touches[0].clientX});addEventListener('touchend',function(e){if(tx===null)return;var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)go(cur+(d<0?1:-1));tx=null});
+document.getElementById('prev').onclick=function(){go(cur-1)};document.getElementById('next').onclick=function(){go(cur+1)};document.getElementById('full').onclick=fs;
+var h=parseInt((location.hash||'').slice(1),10);go(h>0?h-1:0)})();</script></body></html>
